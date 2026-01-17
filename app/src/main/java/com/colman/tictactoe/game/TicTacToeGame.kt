@@ -57,16 +57,14 @@ class TicTacToeGame {
 
     // Checks if the game ended in a draw
     fun isDraw(): Boolean {
-        var isFull = true
         for (row in board) {
             for (cell in row) {
                 if (cell == null) {
-                    isFull = false
-                    break
+                    return false
                 }
             }
         }
-        return isFull && checkWinner() == null
+        return checkWinner() == null
     }
 
     // Resets the game to the initial state
