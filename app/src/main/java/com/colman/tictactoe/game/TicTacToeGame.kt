@@ -1,5 +1,7 @@
 package com.colman.tictactoe.game
 
+data class WinResult(val player: Player, val winningIndices: List<Int>) // Holds the result of a win, including the player and the indices of the winning cells
+
 // Handles the game logic for a Tic Tac Toe game
 class TicTacToeGame {
     private val board = Array(3) { Array<Player?>(3) { null } }
@@ -19,7 +21,7 @@ class TicTacToeGame {
     }
 
     // Checks if there is a winner
-    fun checkWinner(): Player? {
+    fun checkWinner(): WinResult? {
         // Checks rows
         for (i in 0..2) {
             val player = board[i][0]
@@ -27,7 +29,7 @@ class TicTacToeGame {
                 player == board[i][1] &&
                 player == board[i][2]
             ) {
-                return player
+                return WinResult(player, listOf(i * 3, i * 3 + 1, i * 3 + 2))
             }
         }
         // Checks columns
@@ -37,16 +39,17 @@ class TicTacToeGame {
                 player == board[1][i] &&
                 player == board[2][i]
             ) {
-                return player
+                return WinResult(player, listOf(i, i + 3, i + 6))
             }
         }
         // Checks diagonals
         val center = board[1][1]
         if (center != null) {
-            if ((center == board[0][0] && center == board[2][2]) ||
-                (center == board[0][2] && center == board[2][0])
-            ) {
-                return center
+            if (center == board[0][0] && center == board[2][2]) {
+                return WinResult(center, listOf(0, 4, 8))
+            }
+            if (center == board[0][2] && center == board[2][0]) {
+                return WinResult(center, listOf(2, 4, 6))
             }
         }
         return null
@@ -54,14 +57,16 @@ class TicTacToeGame {
 
     // Checks if the game ended in a draw
     fun isDraw(): Boolean {
+        var isFull = true
         for (row in board) {
             for (cell in row) {
                 if (cell == null) {
-                    return false
+                    isFull = false
+                    break
                 }
             }
         }
-        return checkWinner() == null
+        return isFull && checkWinner() == null
     }
 
     // Resets the game to the initial state
