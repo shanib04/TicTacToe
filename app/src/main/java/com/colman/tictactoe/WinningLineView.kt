@@ -44,9 +44,13 @@ class WinningLineView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        if (startX != null && startY != null && endX != null && endY != null) {
-            canvas.drawLine(startX!!, startY!!, endX!!, endY!!, paint)
-        }
+
+        val sx = startX ?: return
+        val sy = startY ?: return
+        val ex = endX ?: return
+        val ey = endY ?: return
+
+        canvas.drawLine(sx, sy, ex, ey, paint)
     }
 }
 
