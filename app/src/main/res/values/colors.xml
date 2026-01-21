@@ -2,4 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primaryColor">#6200EA</color>
+    <color name="xColor">#1A237E</color>
+    <color name="oColor">#C2185B</color>
+    <color name="primaryColorVariant">#3700B3</color>
+    <color name="secondaryColor">#4BA9D9</color>
+    <color name="secondaryColorVariant">#018786</color>
+
+    <color name="backgroundColor">#F2F2F2</color>
+    <color name="cardBackgroundColor">#FFFFFF</color>
+
+    <color name="tileColorDefault">#EDE7F6</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+
+    <color name="accentPop">#FFAB00</color>
 </resources>

@@ -2,18 +2,189 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@android:color/white"
+    android:padding="24dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Decorative Top Circle -->
+    <View
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/circle_shape"
+        android:backgroundTint="#106200EA"
+        android:translationX="-50dp"
+        android:translationY="-50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/gameTitle"
+        style="@style/TicTacToe_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/game_title"
+        app:layout_constraintBottom_toTopOf="@+id/statusText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <!-- Status -->
+    <TextView
+        android:id="@+id/statusText"
+        style="@style/TicTacToe_Status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/player_x_turn"
+        app:layout_constraintBottom_toTopOf="@+id/gameCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameTitle"
+        tools:text="Player X Turn" />
+
+    <!-- Game Board Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/gameCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusText"
+        app:layout_constraintBottom_toTopOf="@+id/resetButton"
+        app:layout_constraintWidth_max="400dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <!-- Row 0 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b0"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/b3"
+                app:layout_constraintEnd_toStartOf="@+id/b1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b1"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/b4"
+                app:layout_constraintEnd_toStartOf="@+id/b2"
+                app:layout_constraintStart_toEndOf="@+id/b0"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b2"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/b5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/b1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Row 1 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b3"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/b6"
+                app:layout_constraintEnd_toStartOf="@+id/b4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/b0" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b4"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/b7"
+                app:layout_constraintEnd_toStartOf="@+id/b5"
+                app:layout_constraintStart_toEndOf="@+id/b3"
+                app:layout_constraintTop_toBottomOf="@+id/b1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b5"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/b8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/b4"
+                app:layout_constraintTop_toBottomOf="@+id/b2" />
+
+            <!-- Row 2 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b6"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/b7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/b3" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b7"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/b8"
+                app:layout_constraintStart_toEndOf="@+id/b6"
+                app:layout_constraintTop_toBottomOf="@+id/b4" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b8"
+                style="@style/TicTacToe_Tile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/b7"
+                app:layout_constraintTop_toBottomOf="@+id/b5" />
+
+            <!-- Winning Line Overlay -->
+            <com.colman.tictactoe.WinningLineView
+                android:id="@+id/winningLineView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Reset Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/resetButton"
+        style="@style/Widget.TicTacToe.ResetButton"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:text="@string/restart_game"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/gameCard"
+        app:layout_constraintStart_toStartOf="@+id/gameCard"
+        app:layout_constraintTop_toBottomOf="@+id/gameCard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
